@@ -9,7 +9,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './auth/login/login.component';
 import { NgxWebstorageModule } from 'ngx-webstorage';
-// decorator ngModule = annotation en java  
+import {ToastrModule, ToastrService} from "ngx-toastr";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+// decorator ngModule = annotation en java
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,9 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgxWebstorageModule.forRoot()
+    NgxWebstorageModule.forRoot(),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

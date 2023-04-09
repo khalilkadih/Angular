@@ -13,7 +13,11 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
 
   signupRequestPayload: SignupRequestPayload;
-  signupForm: FormGroup;
+  signupForm: FormGroup=new FormGroup({
+    username: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', Validators.required),
+  });
 
   constructor(private authService: AuthService, private router: Router,
     private toastr: ToastrService) {
@@ -25,16 +29,15 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.signupForm = new FormGroup({
-      username: new FormControl('', Validators.required),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', Validators.required),
-    });
+
   }
 
   signup() {
+    // @ts-ignore
     this.signupRequestPayload.email = this.signupForm.get('email').value;
+    // @ts-ignore
     this.signupRequestPayload.username = this.signupForm.get('username').value;
+    // @ts-ignore
     this.signupRequestPayload.password = this.signupForm.get('password').value;
 
     this.authService.signup(this.signupRequestPayload)
